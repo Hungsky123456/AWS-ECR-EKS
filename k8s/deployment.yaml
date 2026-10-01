@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nodejs-cicd-demo
-          image: 470562161805.dkr.ecr.ap-southeast-1.amazonaws.com/nodejs-cicd-demo:latest
+          image: 633212682575.dkr.ecr.ap-southeast-1.amazonaws.com/nodejs-cicd-demo:latest
           ports:
             - containerPort: 3000
 ---

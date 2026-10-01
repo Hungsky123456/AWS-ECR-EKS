@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    CLUSTER_NAME: "my-eks-cluster"
+    CLUSTER_NAME: "eks-cicd-lab"
     AWS_REGION: "ap-southeast-1"
     ECR_REPO: "nodejs-cicd-demo"
 
@@ -33,5 +33,5 @@ phases:
       - aws eks update-kubeconfig --name $CLUSTER_NAME --region $AWS_REGION
       - echo "Deploy lên EKS..."
       - sed -i "s|<ECR_REPO_URI>|$REPO_URI|g" k8s/deployment.yaml
-      - kubectl set image deployment/nodejs-cicd-demo nodejs-cicd-demo=$REPO_URI:$IMAGE_TAG --record || kubectl apply -f k8s/deployment.yaml
+      - kubectl set image deployment/nodejs-cicd-demo nodejs-cicd-demo=$REPO_URI:$IMAGE_TAG || kubectl apply -f k8s/deployment.yaml
       - kubectl rollout status deployment/nodejs-cicd-demo
